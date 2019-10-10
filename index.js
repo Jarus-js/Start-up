@@ -28,7 +28,7 @@ app.use(
   })
 );
 
-//Going to instruct passport that it needs to make use of cookies to handle authentication for us
+//Going to instruct passport that it needs to make use of cookies
 app.use(passport.initialize());
 app.use(passport.session());
 

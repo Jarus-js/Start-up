@@ -8,7 +8,7 @@ module.exports = app => {
     })
   );
 
-  app.get("/auth/google/callback", passport.authenticate("google")); //take this code and provide profile info
+  app.get("/auth/google/callback", passport.authenticate("google")); //After user grants permission google server automatically provides code which contain user info.
 
   app.get("/api/current_user", (req, res) => {
     res.send(req.user); //passport automatically attach user property to req obje
