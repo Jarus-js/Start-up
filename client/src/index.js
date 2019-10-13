@@ -4,12 +4,14 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
+//React-redux
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
+import thunk from "redux-thunk";
 //combineReducer
 import combineReducer from "./reducers/combineReducer";
 
-const store = createStore(combineReducer, applyMiddleware());
+const store = createStore(combineReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>

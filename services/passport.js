@@ -13,7 +13,7 @@ const User = mongoose.model("users"); //1 arg means trying to fetch out sth from
 //Cookie ko lagi googleId vayera hudaina unique chainxa which is userid for all time...
 passport.serializeUser((user, done) => {
   //make cookie by including userId  cookie i.e it says that you are user 123 basically identifies user.
-  done(null, user.id); //user.id i.e id provided by mongo itself;
+  done(null, user.id);
 });
 
 //user le post req(magda) passport le cookie pani attach garera pathai dinxa & deserialize identifies cookies & match user

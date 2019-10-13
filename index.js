@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 
+const bodyParser = require("body-parser");
+
 //User Model - First
 const userModel = require("./models/User");
 
@@ -18,6 +20,10 @@ mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
 
 //Initializing express function
 const app = express();
+
+//body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 //Middlewares are small functions which can be used to modify incoming req to our app before they are sent to route handlers
 //express has no idea how to handle cookies so we install helper library cookie-session to manage cookies   in our app
@@ -33,12 +39,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Route handlers
-//authRoutes
 require("./routes/authRoutes")(app);
-
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+require("./routes/billingRoutes")(app);
 
 const PORT = process.env.PORT || 5000;
 
